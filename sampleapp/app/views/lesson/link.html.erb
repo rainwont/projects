@@ -1,0 +1,17 @@
+<p><%= link_to "yahoo", "http://www.yahoo.co.jp/" %></p>
+<p><%= link_to "google", "http://www.google.com" %></p>
+<p><%= link_to "action", controller: "lesson", action:"step1", name:"rainwont" %></p>
+<p><%= link_to "hello hoge", controller: "lesson", action:"step1", name:"hoge" %></p>
+
+<p><%= link_to "hello", controller: "lesson", action:"step1", name:"hoge", confirm: "ok" %></p>
+
+<p><%= link_to nil, "http://www.google.com/" %></p>
+
+
+
+<%= link_to "sample", controller:"lesson", action:"step1",  name:"samplename" %>
+
+<%= link_to "tagHome", root_path, class: "menu" %>
+
+<p><%= link_to_unless_current "home", root_path %></p>
+<p><%= link_to_unless_current "link", controller:"lesson", action:"link" %></p>

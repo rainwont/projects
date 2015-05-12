@@ -85,6 +85,30 @@ class LessonController < ApplicationController
    @message = "ヘルパーメソッドを自作\n改行のテスト"
  end
 
+ def step16
+
+ end
+
+ def link
+
+ end
+
+ def image
+
+ end
+
+ def step99
+
+ end
+
+ def step18
+  @zaiko = 10
+  @i = 100
+ end
+
+ def step19
+   @items = {"フライパン" => 2680, "ワイングラス" => 500, "ペッパーミル" => 4000, "ピーラー" => 945}
+end
 
 
 

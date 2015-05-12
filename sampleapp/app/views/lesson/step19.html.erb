@@ -1,0 +1,9 @@
+<table border="1" cellpadding="4">
+  <% @items.each do |key, val| %>
+  <tr>
+    <th><%= key %>
+      <td align="right"><%= number_with_delimiter(val) %> yen.</td>
+    </th>
+  </tr>
+      <% end %>
+</table>
