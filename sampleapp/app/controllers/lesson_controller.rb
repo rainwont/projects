@@ -36,7 +36,7 @@ class LessonController < ApplicationController
 =end
 
  def step7
-   render text: @message
+   render(text: @message)
  end
 
  def hogefilter
