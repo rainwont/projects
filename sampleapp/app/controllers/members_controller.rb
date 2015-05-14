@@ -28,7 +28,9 @@ class MembersController < ApplicationController
 
   end
 
+  # 検索
   def search
-
+    @members = Member.search(params[:q])
+    render "index"
   end
 end
