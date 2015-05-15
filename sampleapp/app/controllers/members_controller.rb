@@ -17,10 +17,24 @@ class MembersController < ApplicationController
   end
 
   def create
-
+    params.permit!
+    @member = Member.new(params[:member])
+    if @member.save
+      redirect_to @member, notice: "会員を登録しました。"
+    else
+      render "new"
+    end
   end
 
   def update
+    params.permit!
+    @member = Member.find(params[:id])
+    @member.assign_attributes(params[:member])
+    if @member.save
+      redirect_to @member, notice: "会員情報を更新しました。"
+    else
+      render "edit"
+    end
 
   end
 
@@ -33,4 +47,5 @@ class MembersController < ApplicationController
     @members = Member.search(params[:q])
     render "index"
   end
+
 end

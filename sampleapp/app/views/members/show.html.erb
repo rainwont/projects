@@ -13,8 +13,10 @@
     <th>ニックネーム</th>
     <td><%= @member.name %></td>
   </tr>
-  <th>氏名</th>
-  <td><%= @member.full_name %></td>
+  <tr>
+    <th>氏名</th>
+    <td><%= @member.full_name %></td>
+  </tr>
   <tr>
     <th>性別</th>
     <td><%= @member.gender == 0 ? "男" : "女" %></td>
