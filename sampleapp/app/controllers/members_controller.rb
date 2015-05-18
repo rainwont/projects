@@ -35,11 +35,13 @@ class MembersController < ApplicationController
     else
       render "edit"
     end
-
   end
 
   def destroy
-
+    params.permit!
+    @member = Member.find(params[:id])
+    @member.destroy
+    redirect_to :members, notice: "会員情報を削除しました。"
   end
 
   # 検索
