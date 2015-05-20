@@ -8,6 +8,8 @@ Sampleapp::Application.routes.draw do
 
   get "lesson/:action(/:name)" => "lesson"
 
+  resources :articles
+
   resources :members do
     collection { get "search"}
   end

@@ -44,3 +44,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :test do
+  gem 'factory_girl_rails', '~>1.4.0'
+end
