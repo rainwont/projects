@@ -10,13 +10,15 @@ class Article < ActiveRecord::Base
     where("release_at <= ? AND (? expired_at OR " +
     "expired_at IS NULL)", now, now )}
 
-  def no expiration
+  def no_expiration
     expired_at.blank?
   end
+
 
   def no_expiration=(val)
     @no_expiration = val.in?([true, 1, "1"])
   end
+
 
   class << self
     def sidebar_articles(num = 5)
