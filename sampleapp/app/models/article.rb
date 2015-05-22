@@ -5,10 +5,13 @@ class Article < ActiveRecord::Base
   validate :check_expired_at
   before_validation :clear_expired_at
 
-  scope :readable,
-  ->{ now = Time.current
-    where("release_at <= ? AND (? expired_at OR " +
-    "expired_at IS NULL)", now, now )}
+  scope :readable_for,
+    ->(member){
+      now = Time.current
+      rel = where("released_at <= ? AND (? < expired_at OR " +
+                  "expired_at IS NULL)", now, now)
+      member.kind_of?(Member) ? rel : rel.where(member_only: false) }
+
 
   def no_expiration
     expired_at.blank?
@@ -21,8 +24,8 @@ class Article < ActiveRecord::Base
 
 
   class << self
-    def sidebar_articles(num = 5)
-      readable.order("released_at DESC").limit(num)
+    def sidebar_articles(member, num = 5)
+      readable_for(member).order("released_at DESC").limit(num)
     end
   end
 
