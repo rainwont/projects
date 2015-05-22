@@ -14,18 +14,6 @@ class Member < ActiveRecord::Base
             uniqueness: { case_sensitive: false }
 
   validates :full_name, length: { maximum: 20 }
-  #validate :check_email
-  validates :password, presence: { on: :create },
-  confirmation: { allow_blank: true }
-
-  attr_accessor :password, :password_confirmation
-
-  def password=(val)
-    if val.present?
-      self.hashed_password = BCrypt::Password.create(val)
-      end
-      @password = val
-  end
 
   private
 
