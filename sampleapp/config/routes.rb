@@ -8,11 +8,12 @@ Sampleapp::Application.routes.draw do
 #    collection { get "search" }
 #  end
 
-resources :members do
+resources :members, only: [:index, :show] do
   collection { get "search" }
 end
 
-  resources :articles
+  resources :articles, only: [:index, :show]
+  
 
   resource :session, only: [:create, :destroy]
 

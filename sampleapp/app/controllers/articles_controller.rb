@@ -3,12 +3,16 @@
 class ArticlesController < ApplicationController
   # 記事一覧
   def index
-    @articles = Article.order("released_at DESC")
+    #@articles = Article.order("released_at DESC")
+    @articles = Article.readable_for(@current_member).
+      order("released_at DESC")
   end
 
   def show
     params.permit!
-    @article = Article.find(params[:id])
+  #  @article = Article.find(params[:id])
+    @article = Article.readable_for(@current_member).
+      find(params[:id])
   end
 
   # 新規作成
