@@ -1,21 +1,29 @@
 Sampleapp::Application.routes.draw do
-  root to: "hello#index"
-  get "hello/index"
-  get "top/index"
-
-  # get "about" => "top#about", as: "about"
-  get "about" => "hello#about", as: "about"
+  root to: "top#index"
+  get "about" => "top#about", as: "about"
 
   get "lesson/:action(/:name)" => "lesson"
 
-  resources :articles
+#  resources :members, only: [:index, :show] do
+#    collection { get "search" }
+#  end
 
-  resources :members do
-    collection { get "search"}
-  end
+resources :members do
+  collection { get "search" }
+end
+
+  resources :articles
 
   resource :session, only: [:create, :destroy]
 
+  namespace :admin do
+    root to: "top#index"
+    resources :members do
+      collection { get "search" }
+    end
+    resources :articles
+  end
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -71,4 +79,3 @@ Sampleapp::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end

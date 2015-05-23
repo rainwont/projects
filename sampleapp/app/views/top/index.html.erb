@@ -1,2 +1,5 @@
-<h1>‚±‚ñ‚É‚¿‚Í</h1>
-<p>‚±‚ê‚©‚çRails‚Ì•×‹­‚ğn‚ß‚Ü‚·B</p>
+<% @articles.each do |article| %>
+<h2><%= article.title %></h2>
+<p><%= truncate(article.body, length: 80) %>
+<%= link_to "ã‚‚ã£ã¨èª­ã‚€", article %></p>
+<% end %>
