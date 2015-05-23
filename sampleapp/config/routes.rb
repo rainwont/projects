@@ -8,12 +8,12 @@ Sampleapp::Application.routes.draw do
 #    collection { get "search" }
 #  end
 
-resources :members, only: [:index, :show] do
-  collection { get "search" }
-end
+  resources :members, only: [:index, :show] do
+    collection { get "search" }
+  end
 
   resources :articles, only: [:index, :show]
-  
+
 
   resource :session, only: [:create, :destroy]
 
@@ -24,6 +24,9 @@ end
     end
     resources :articles
   end
+
+  resource :account, only:[:show, :edit, :update]
+
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
