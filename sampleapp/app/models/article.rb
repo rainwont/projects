@@ -12,6 +12,8 @@ class Article < ActiveRecord::Base
                   "expired_at IS NULL)", now, now)
       member.kind_of?(Member) ? rel : rel.where(member_only: false) }
 
+  #attr_accessible :title, :body, :released_at, :expired_at,
+  #  :no_expiration, :member_only, as: :admin
 
   def no_expiration
     expired_at.blank?

@@ -13,7 +13,7 @@ class Admin::ArticlesController < Admin::Base
 
   # 新規登録フォーム
   def new
-    @article = Article.new
+    @article = Article.new(params[:article], as: :admin)
   end
 
   # 編集フォーム
@@ -43,7 +43,7 @@ class Admin::ArticlesController < Admin::Base
 =end
 
     @article = Article.find(params[:id])
-    @article.assign_attributes(params[:article])
+    @article.assign_attributes(params[:article], as: :admin)
     if @article.save
       redirect_to @article, notice: "ニュース記事を更新しました"
 

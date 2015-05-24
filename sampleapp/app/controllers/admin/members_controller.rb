@@ -3,12 +3,20 @@
 class Admin::MembersController < Admin::Base
   # 会員一覧
   def index
-    @members = Member.order("number")
+#    @members = Member.order("number").
+#      paginate(page: params[:page], per_page: 3)
+
+#    @members = Member.order("number").paginate(page: params[:page])
+
+    @members = Member.order("number").
+    paginate(page: params[:page], per_page: 3)
+
   end
 
   # 検索
   def search
-    @members = Member.search(params[:q])
+    @members = Member.search(params[:q]).
+      paginate(page: params[:page], per_page: 3)
     render "index"
   end
 
@@ -29,7 +37,7 @@ class Admin::MembersController < Admin::Base
 
   # 会員の新規登録
   def create
-    @member = Member.new(params[:member])
+    @member = Member.new(params[:member], as: :admin)
     if @member.save
       redirect_to [:admin, @member], notice: "会員を登録しました。"
     else
@@ -40,7 +48,7 @@ class Admin::MembersController < Admin::Base
   # 会員情報の更新
   def update
     @member = Member.find(params[:id])
-    @member.assign_attributes(params[:member])
+    @member.assign_attributes(params[:member], as: :admin)
     if @member.save
       redirect_to [:admin, @member], notice: "会員情報を更新しました。"
     else

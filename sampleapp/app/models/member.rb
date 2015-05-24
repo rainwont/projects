@@ -15,7 +15,12 @@ class Member < ActiveRecord::Base
   validates :password, presence: { on: :create },
     confirmation: { allow_blank: true }
 
-  attr_accessor :password, :password_confirmation
+  #attr_accessor :password, :password_confirmation
+
+  #ACCESSIBLE_ATTRS = [:name, :full_name, :gender, :birthday,
+#    :email, :password, :password_confirmation]
+
+
 
   def password=(val)
     if val.present?

@@ -21,5 +21,6 @@ module Sampleapp
     config.i18n.default_locale = :ja
 
     config.autoload_paths += %W(#{config.root}/lib)
+    #config.active_record.whitelist_attributes = true
   end
 end
