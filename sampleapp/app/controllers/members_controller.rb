@@ -8,6 +8,11 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    if params[:format].in?(["jpg", "png", "gif"])
+      send_image
+    else
+      render "members/show"
+    end
   end
 
   def new
@@ -50,6 +55,17 @@ class MembersController < ApplicationController
   def search
     @members = Member.search(params[:q])
     render "index"
+  end
+
+  private
+  # 画像送信
+  def send_image
+    if @member.image.present?
+      send_data @member.image.data,
+        type: @member.image.content_type, disposition: "inline"
+    else
+      raise NotFound
+    end
   end
 
 end

@@ -1,6 +1,8 @@
 class Member < ActiveRecord::Base
   include EmailAddressChecker
 
+  has_one :image, class_name: "MemberImage", dependent: :destroy
+
   validates :number, presence: true,
     numericality: { only_integer: true,
        greater_than: 0, less_than: 100, allow_blank: true },
@@ -15,10 +17,10 @@ class Member < ActiveRecord::Base
   validates :password, presence: { on: :create },
     confirmation: { allow_blank: true }
 
-  #attr_accessor :password, :password_confirmation
+  attr_accessor :password, :password_confirmation
 
-  #ACCESSIBLE_ATTRS = [:name, :full_name, :gender, :birthday,
-#    :email, :password, :password_confirmation]
+  ACCESSIBLE_ATTRS = [:name, :full_name, :gender, :birthday,
+    :email, :password, :password_confirmation]
 
 
 
