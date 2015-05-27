@@ -4,6 +4,10 @@
     <td><%= @member.number %></td>
   </tr>
   <tr>
+    <th>画像</th>
+    <td><%= member_image_tag @member, width: 96 %></td>
+  </tr>
+  <tr>
     <th>ニックネーム</th>
     <td><%= @member.name %></td>
   </tr>
